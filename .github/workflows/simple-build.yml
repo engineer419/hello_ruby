@@ -3,7 +3,7 @@ name: Trigger Jenkins Job
 on:
   push:
     branches:
-      - main  # Adjust to your branch if necessary
+      - main
 
 jobs:
   build:
@@ -15,5 +15,4 @@ jobs:
       - name: Trigger Jenkins Job
         run: |
           curl -X POST http://localhost:8888/job/hello/build \
-          --user new_admin:11bb8e467eca2ab9b921609eb961b93951
-
+          --user new_admin:${{ secrets.JENKINS_API_TOKEN }}
