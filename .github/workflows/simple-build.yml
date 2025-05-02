@@ -3,11 +3,12 @@ name: Trigger Jenkins Job
 on:
   push:
     branches:
-      - main
+      - main  # Adjust to your branch if necessary
 
 jobs:
   build:
-    runs-on: self-hosted  # This is your self-hosted runner
+    runs-on: self-hosted  # This specifies the self-hosted runner
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -16,3 +17,4 @@ jobs:
         run: |
           curl -X POST http://localhost:8888/job/hello/build \
           --user new_admin:${{ secrets.JENKINS_API_TOKEN }}
+
