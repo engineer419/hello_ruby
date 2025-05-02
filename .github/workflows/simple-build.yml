@@ -15,7 +15,7 @@ jobs:
 
       - name: Trigger Jenkins Job
         run: |
-          curl -X POST http://localhost:8888/jenkins/job/hello/build \
+          curl -X POST http://localhost:8080/jenkins/job/hello/build \
           --user new_admin:${{ secrets.JENKINS_API }}  # Using the secret correctly
         env:
           JENKINS_API: ${{ secrets.JENKINS_API }}
