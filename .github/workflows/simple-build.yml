@@ -1,18 +1,20 @@
-name: Simple Build
+name: Trigger Jenkins Job
 
 on:
   push:
     branches:
-      - main  
+      - main  # Adjust to your branch if necessary
 
 jobs:
   build:
-    runs-on: self-hosted 
-    environment:
-      GIT_SSH: /usr/bin/ssh
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+    runs-on: self-hosted  # This is your self-hosted runner
 
-      - name: Build step
-        run: echo "Build successful"
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Trigger Jenkins Job
+        run: |
+          curl -X POST http://localhost:8888/job/hello/build \
+          --user new_admin:${{ secrets.JENKINS_API }}
+
