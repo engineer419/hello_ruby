@@ -1,20 +1,17 @@
-name: Trigger Jenkins Job
+name: Simple Build
 
 on:
   push:
     branches:
-      - main  # Adjust to your branch if necessary
+      - main  
 
 jobs:
   build:
-    runs-on: self-hosted  # This specifies the self-hosted runner
+    runs-on: self-hosted 
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Trigger Jenkins Job
-        run: |
-          curl -X POST http://localhost:8888/job/hello/build \
-          --user new_admin:${{ secrets.JENKINS_API_TOKEN }}
-
+      - name: Build step
+        run: echo "Build successful"
