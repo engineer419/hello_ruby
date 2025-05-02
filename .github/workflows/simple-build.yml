@@ -1,18 +1,19 @@
-name: Simple Build
+name: Trigger Jenkins Job
 
 on:
   push:
     branches:
-      - main  # Trigger the workflow on push to the main branch (adjust to your branch)
+      - main  # Adjust to your branch if necessary
 
 jobs:
   build:
-    runs-on: self-hosted  # Run on your self-hosted runner
-
+    runs-on: self-hosted  # This is your self-hosted runner
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: Build step
-        run: echo "Build successful"
+      - name: Trigger Jenkins Job
+        run: |
+          curl -X POST http://localhost:8888/job/hello/build \
+          --user new_admin:11bb8e467eca2ab9b921609eb961b93951
 
