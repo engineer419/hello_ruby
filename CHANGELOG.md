@@ -4,3 +4,4 @@
 
 - Initial release
 - Add awesome to the License! FINALLY!
+- Add CI/CD
