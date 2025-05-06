@@ -2,11 +2,11 @@ pipeline {
     agent any
 
     parameters {
-        string(name: 'IMAGE_NAME', defaultValue: 'registry.local:5000/ruby-minimal', description: 'Docker image to use for running the build')
+        string(name: 'IMAGE_NAME', defaultValue: 'registry.local:5000/ruby-minimal:1.0', description: 'Docker image to use for running the build')
     }
 
     environment {
-        CONTAINER_NAME = 'gem_runner'
+        CONTAINER_NAME = 'ruby_minimal'
         GEM_FILE = ''
     }
 
