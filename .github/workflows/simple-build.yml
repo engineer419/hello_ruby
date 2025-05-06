@@ -1,19 +1,16 @@
-name: Trigger Jenkins Build
+name: Trigger Jenkins Job
 
 on:
   push:
     branches:
-      - main  # Triggers only on push to main branch
+      - main  # Adjust if your main branch is named differently
 
 jobs:
   trigger:
-    runs-on: ubuntu-latest  # GitHub-hosted runner
+    runs-on: self-hosted  # This uses your Docker-based self-hosted runner
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Trigger Jenkins Job
+      - name: Trigger Jenkins Job from Localhost
         run: |
           curl -X POST http://localhost:8080/job/gem_test/build \
             --user admin:${{ secrets.JENKINS_API }}
