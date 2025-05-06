@@ -12,6 +12,6 @@ jobs:
     steps:
       - name: Trigger Jenkins Job from Localhost
         run: |
-          curl -X POST http://localhost:8080/job/gem_test/build \
+          curl -X POST http://localhost:8080job/gem%20build%20real/build \
             --user admin:${{ secrets.JENKINS_API }}
 
